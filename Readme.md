@@ -1,0 +1,1 @@
+Reference on other repository https://github.com/nikbali/javahack_android
