@@ -4,3 +4,7 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ../data/redis:/data
+    restart: always
