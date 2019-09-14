@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDto {
     private int okved;
-    private Long inn;
     private int category;
+    private Long inn;
 }
