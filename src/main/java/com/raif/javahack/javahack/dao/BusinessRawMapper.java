@@ -41,10 +41,16 @@ public class BusinessRawMapper implements BusinessDao {
 
     private Business getBusiness(ResultSet rs) throws SQLException {
         Business business = new Business();
+
         business.setId( rs.getLong(1));
         business.setFirstName(rs.getString(2));
         business.setLastName(rs.getString(3));
-        business.setInn( rs.getLong(4));
+        business.setInn(rs.getLong(4));
+        business.setOkved(rs.getLong(5));
+        business.setFull_with_opf(rs.getString(6));
+        business.setShort_with_opf(rs.getString(7));
+        business.setAdress(rs.getString(8));
+
         return business;
     }
 

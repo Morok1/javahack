@@ -8,38 +8,56 @@ CREATE TABLE BUSINESS(
   last_name VARCHAR(250) NOT NULL,
   INN INTEGER DEFAULT NULL,
   okved INTEGER DEFAULT NULL,
-);
+  post VARCHAR(250) NOT NULL,
+  full_with_opf VARCHAR(250) NOT NULL,
+  short_with_opf VARCHAR(250) NOT NULL,
+  adress VARCHAR(250) NOT NULL,
+--   "post":"ПРЕЗИДЕНТ, ПРЕДСЕДАТЕЛЬ ПРАВЛЕНИЯ",
+--  "full_with_opf":"ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"СБЕРБАНК РОССИИ\"",
+--                "short_with_opf":"ПАО СБЕРБАНК",
+--                "full":"СБЕРБАНК РОССИИ",
+--   "adress":"г Москва, ул Вавилова, д 19"
 
+-- Три Business рекомендуемые поставщики
+  );
 
 CREATE TABLE PRODUCERS(
   id INT AUTO_INCREMENT  PRIMARY KEY,
-  business_id int NOT NULL,
+  business_id int NOT NULL ,
   producer_id int NOT NULL,
-  CONSTRAINT PRODUCERS_info UNIQUE(business_id,producer_id)
+  CONSTRAINT PRODUCERS_info UNIQUE(business_id,producer_id),
+  FOREIGN key (business_id) references BUSINESS(id)
 );
 
 CREATE TABLE CONSUMERS(
   id INT AUTO_INCREMENT  PRIMARY KEY,
   business_id int NOT NULL,
   consumer_id int NOT NULL,
-
-  CONSTRAINT CONSUMERS_info UNIQUE(business_id,consumer_id)
+  CONSTRAINT CONSUMERS_info UNIQUE(business_id,consumer_id),
+  FOREIGN key (business_id) references BUSINESS(id)
 );
 
 
-INSERT INTO BUSINESS(first_name, last_name, INN, okved) VALUES
-  ('Lokesh', 'Gupta', 1322,3),
-  ('DejaVu', 'xyz@email.com', 22233, 3),
-  ('Caption', 'America', 3223232,4);
+INSERT INTO BUSINESS(first_name, last_name, INN, okved,post, full_with_opf,
+short_with_opf, adress) VALUES
+  ('Lokesh', 'Gupta', 1322,3, 'ПРЕЗИДЕНТ, ПРЕДСЕДАТЕЛЬ ПРАВЛЕНИЯ',
+  'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"СБЕРБАНК РОССИИ\',
+  'ПАО СБЕРБАНК', 'г Москва, ул Вавилова, д 19"'),
+  ('DejaVu', 'xyz@email.com', 22233, 3,'ПРЕЗИДЕНТ, ПРЕДСЕДАТЕЛЬ ПРАВЛЕНИЯ',
+  'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"СБЕРБАНК РОССИИ\',
+  'ПАО СБЕРБАНК', 'г Москва, ул Вавилова, д 19"'),
+  ('Caption', 'America', 3223232,4, 'ПРЕЗИДЕНТ, ПРЕДСЕДАТЕЛЬ ПРАВЛЕНИЯ',
+  'ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"СБЕРБАНК РОССИИ\',
+  'ПАО СБЕРБАНК', 'г Москва, ул Вавилова, д 19"');
 
 INSERT INTO PRODUCERS (business_id, producer_id) values
-  (12, 1322),
-  (13, 1321),
-  (14, 1322)
+  (1, 1322),
+  (2, 1321),
+  (3, 1322)
 ;
 
 INSERT INTO CONSUMERS  (business_id, consumer_id) values
-  (15, 1322),
-  (16, 1321),
-  (17, 1322)
+  (1, 1322),
+  (2, 1321),
+  (3, 1322)
 ;

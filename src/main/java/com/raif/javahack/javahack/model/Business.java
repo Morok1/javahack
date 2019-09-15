@@ -12,4 +12,10 @@ public class Business {
     private String firstName;
     private String lastName;
     private Long inn;
+    private Long okved;
+    private String post;
+    private String full_with_opf;
+    private String short_with_opf;
+    private String adress;
+
 }
