@@ -32,4 +32,7 @@ public class BusinessService {
                 .collect(Collectors.toList());
     }
 
+    public BusinessDTO getBusinessByInn(String inn) {
+        return businessConverter.convert(businessDao.getBusinessByInn(inn));
+    }
 }

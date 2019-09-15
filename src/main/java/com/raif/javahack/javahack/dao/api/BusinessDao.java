@@ -9,4 +9,5 @@ public interface BusinessDao {
     Business getBusinessById(Long id);
 
     List<Business> getBusinessByOkved(Long okved);
+    Business getBusinessByInn(String inn);
 }
