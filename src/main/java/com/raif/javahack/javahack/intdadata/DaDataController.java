@@ -7,7 +7,11 @@ import com.raif.javahack.javahack.intdadata.model.UserDto;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,17 +23,16 @@ import java.util.Collections;
 
 @Controller
 public class DaDataController implements UserDataApi {
-    @Autowired
-    private RestTemplate restTemplate;
-
-    private static final String DA_DATA_URL  = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party/";
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private static final String DA_DATA_URL = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party/";
     private final static String AUTHORIZATION = "Authorization";
     private final static String TOKEN = "Token bf259c2f85c6d2f1d7ec24275930310af6e9448f";
     private final static String QUERY = "query";
     private final static String SUGGESTIONS = "suggestions";
     private final static String DATA = "data";
     private final static String OKVED = "okved";
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired
+    private RestTemplate restTemplate;
 //    private static final String QUERY_NUMBER = "7707083893";
 
     @GetMapping("/data/{inn}")
@@ -44,7 +47,7 @@ public class DaDataController implements UserDataApi {
         jsonObject.put(QUERY, inn);
         HttpEntity<String> entity = new HttpEntity<>(jsonObject.toString(), headers);
 
-        ResponseEntity<String> result =  restTemplate.exchange(DA_DATA_URL, HttpMethod.POST, entity, String.class);
+        ResponseEntity<String> result = restTemplate.exchange(DA_DATA_URL, HttpMethod.POST, entity, String.class);
 
         JsonNode root = objectMapper.readTree(result.getBody());
 
