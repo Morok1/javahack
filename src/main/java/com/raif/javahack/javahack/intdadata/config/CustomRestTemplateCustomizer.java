@@ -10,5 +10,4 @@ public class CustomRestTemplateCustomizer implements RestTemplateCustomizer {
     }
 
 
-
 }
