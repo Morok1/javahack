@@ -1,8 +1,11 @@
 package com.raif.javahack.javahack.dto;
 
+import com.raif.javahack.javahack.model.Business;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +20,7 @@ public class BusinessDTO {
     private String full_with_opf;
     private String short_with_opf;
     private String adress;
+
+    private List<Business> recomProducers;
+    private List<Business> recomConsumers;
 }

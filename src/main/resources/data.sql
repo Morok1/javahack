@@ -12,13 +12,6 @@ CREATE TABLE BUSINESS(
   full_with_opf VARCHAR(250) NOT NULL,
   short_with_opf VARCHAR(250) NOT NULL,
   adress VARCHAR(250) NOT NULL,
---   "post":"ПРЕЗИДЕНТ, ПРЕДСЕДАТЕЛЬ ПРАВЛЕНИЯ",
---  "full_with_opf":"ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"СБЕРБАНК РОССИИ\"",
---                "short_with_opf":"ПАО СБЕРБАНК",
---                "full":"СБЕРБАНК РОССИИ",
---   "adress":"г Москва, ул Вавилова, д 19"
-
--- Три Business рекомендуемые поставщики
   );
 
 CREATE TABLE PRODUCERS(
@@ -51,13 +44,13 @@ short_with_opf, adress) VALUES
   'ПАО СБЕРБАНК', 'г Москва, ул Вавилова, д 19"');
 
 INSERT INTO PRODUCERS (business_id, producer_id) values
-  (1, 1322),
-  (2, 1321),
-  (3, 1322)
+  (1, 1),
+  (2, 2),
+  (3, 3)
 ;
 
 INSERT INTO CONSUMERS  (business_id, consumer_id) values
-  (1, 1322),
-  (2, 1321),
-  (3, 1322)
+  (1, 1),
+  (2, 2),
+  (3, 3)
 ;

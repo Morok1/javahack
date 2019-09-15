@@ -1,6 +1,7 @@
 package com.raif.javahack.javahack.controller;
 
 import com.raif.javahack.javahack.dto.BusinessDTO;
+import com.raif.javahack.javahack.model.Business;
 import com.raif.javahack.javahack.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +20,19 @@ public class BusinessController implements BusinessApi{
         return  businessService.getBusinessById(id);
     }
 
-    @GetMapping("/businesses/{okved}")
+    @GetMapping("/businesses_okved/{okved}")
     public List<BusinessDTO> getBusinesses(@PathVariable("okved") Long okved){
         return businessService.getBusinessDTOs(okved);
     }
 
     @Override
-    public BusinessDTO getBusinessByInn(String inn) {
+    @GetMapping("/business_inn/{inn}")
+    public BusinessDTO getBusinessByInn(@PathVariable("inn") String inn) {
 
         return businessService.getBusinessByInn( inn);
     }
+
+
+
+
 }
