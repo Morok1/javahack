@@ -28,17 +28,17 @@ public class ProducerOkvedDAO {
         redisProducersTemplate.opsForSet().add(consumerCategory, producerList);
     }
 
-    public Set<String> getProducerList(String key) {
+    public Set<Long> getProducerList(String key) {
         if (redisProducersTemplate.hasKey(key)) {
-            Set<String> set = redisProducersTemplate.opsForSet().members(key)
+            Set<Long> set = redisProducersTemplate.opsForSet().members(key)
                                                     .stream()
-                                                    .map(obj -> (String) obj).collect(Collectors.toSet());
-            for (String str : set) {
+                                                    .map(obj -> (Long) obj).collect(Collectors.toSet());
+            for (Long str : set) {
                 System.out.println(str);
             }
             return set;
         } else {
-            return new HashSet<String>();
+            return new HashSet<>();
         }
 
     }

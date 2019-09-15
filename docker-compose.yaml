@@ -8,3 +8,11 @@ services:
     volumes:
       - ../data/redis:/data
     restart: always
+  web:
+    build:
+      context: ./
+    depends_on:
+      - redis
+    container_name: web
+    ports:
+      - "9000:8081"

@@ -35,7 +35,7 @@ public class DaDataController implements UserDataApi {
     private RestTemplate restTemplate;
 //    private static final String QUERY_NUMBER = "7707083893";
 
-    @GetMapping("/data/{inn}")
+
     public @ResponseBody
     UserDto getUserDataByInn(@PathVariable("inn") Long inn) throws JSONException, IOException {
         HttpHeaders headers = new HttpHeaders();

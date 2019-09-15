@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @RestController
-public class Controller {
+public class RedisController {
 
     @Autowired
     private ConsumerOkvedDAO consumerOkvedDAO;
@@ -18,8 +18,8 @@ public class Controller {
     @Autowired
     private ProducerOkvedDAO producerOkvedDAO;
 
-    @RequestMapping("/")
-    public Set<String> greeting(@RequestParam(value = "okved", required = false) String okved) {
+
+    public Set<Long> greeting(@RequestParam(value = "okved", required = false) String okved) {
         consumerOkvedDAO.setProducerList(okved, new String[]{"A", "B", "C"});
         producerOkvedDAO.setProducerList(okved, new String[]{"X", "Y", "Z"});
         System.out.println(consumerOkvedDAO.getProducerList(okved));
