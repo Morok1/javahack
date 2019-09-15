@@ -5,4 +5,5 @@ import com.raif.javahack.javahack.dto.BusinessDTO;
 public interface BusinessApi {
     BusinessDTO getBusinessByInn(String inn);
 
+
 }

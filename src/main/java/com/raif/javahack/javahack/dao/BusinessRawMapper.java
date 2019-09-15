@@ -24,6 +24,14 @@ public class BusinessRawMapper implements BusinessDao {
         return business;
     }
 
+    public Business getBusinessByInn(String inn) {
+        String query = "SELECT * FROM BUSINESS where  inn = ";
+        List<Business> businesses = performQuery(Long.valueOf(inn), query);
+        Business business = businesses.stream().filter(s -> s.getId() == Long.valueOf(inn))
+                .findFirst().orElse(new Business());
+        return business;
+    }
+
     @Override
     public List<Business> getBusinessByOkved(Long okved) {
         String query = "SELECT * FROM BUSINESS where  okved= ";
@@ -53,6 +61,5 @@ public class BusinessRawMapper implements BusinessDao {
 
         return business;
     }
-
 
 }
