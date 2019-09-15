@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class BusinessController {
+public class BusinessController implements BusinessApi{
     @Autowired
     private BusinessService businessService;
 
@@ -22,5 +22,11 @@ public class BusinessController {
     @GetMapping("/businesses/{okved}")
     public List<BusinessDTO> getBusinesses(@PathVariable("okved") Long okved){
         return businessService.getBusinessDTOs(okved);
+    }
+
+    @Override
+    public BusinessDTO getBusinessByInn(String inn) {
+
+        return businessService.getBusinessByInn( inn);
     }
 }
