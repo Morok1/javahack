@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 public class BusinessController implements BusinessApi{
-    @Atowired
+    @Autowired
     private BusinessService businessService;
 
     @GetMapping("/business/{id}")
